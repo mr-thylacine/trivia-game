@@ -14,7 +14,7 @@ var incorrectAnswers = 0;
 
 // countdown() tells us how quickly we should decrement time (in this case, by 1 second each time)
 
-function countdown() {
+function countdown () {
 	stopTime = setInterval(decrement, 1000);
 	decrement();
 }
@@ -23,12 +23,13 @@ function countdown() {
 
 // Updates the in-browser timer to show how many seconds the player has left
 
-function decrement() {
+function decrement () {
 
 	time--;
 
 	// Continue to update the on-screen timer
-	$("#countdown-timer").html(time);
+	$("#countdown-timer")
+       .html(time);
 
 	if (time === 0) {
 		stop();
@@ -45,15 +46,16 @@ function decrement() {
 
 // This function uses stopTime to... stop() time *ROLL CREDITS*
 
-function stop() {
+function stop () {
 	clearInterval(stopTime);
 }
 
 // checkAnswers() to see if user's answers are correct (or not...)
 
-function checkAnswers() {
-var cat = 
-$(".cat").on("click", function() {
+function checkAnswers () {
+	var cat = 
+$(".cat")
+.on("click", () => {
 	console.log("clck");
 });
 
@@ -81,7 +83,7 @@ $(".cat").on("click", function() {
 	// var correct = "<p>You have </p>" + correctAnswers + " <p>correct answers so far</p>";
 	// document.querySelector("#scorekeeper").innerHMTL = correct;
 
-};
+}
 
 // Shows you your scores
 
