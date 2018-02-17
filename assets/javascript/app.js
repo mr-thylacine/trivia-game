@@ -33,12 +33,14 @@ function decrement() {
 	if (time === 0) {
 		stop();
 		alert("STOP.");
-		alert("Hammer time!");
+		// alert("Hammer time!");
 		checkAnswers();
 	}
 
 	// Testing purposes
 	console.log(time);
+
+
 }
 
 // This function uses stopTime to... stop() time *ROLL CREDITS*
@@ -50,33 +52,19 @@ function stop() {
 // checkAnswers() to see if user's answers are correct (or not...)
 
 function checkAnswers() {
+var cat = 
+$(".cat").on("click", function() {
+	console.log("clck");
+});
 
-	// Checks to see if data-checkanswers = "correct" (in each question) is selected
-	$("radio").on("click", function() {
-			if ("data-checkanswer" === true) {
-				correctAnswers++;
-				console.log("the " + correctAnswers);
-			}
+	// $("input").on("click", function() {
 
-	});
+	// 	console.log("You checked " + $("input:checked").val());
 
-
-
-
-	if ("data-checkanswer" == "correct") {
-		correctAnswers++;
-		console.log(correctAnswers);
-		console.log("You have " + correctAnswers + " correct answers!");
-	}
-
-	$("input").on("click", function() {
-
-		console.log("You checked " + $("input:checked").val());
-
-		if ($("correct") === true)
-		correctAnswers++;
-		console.log(correctAnswers);
-	});
+	// 	if ($("correct") === true)
+	// 	correctAnswers++;
+	// 	console.log(correctAnswers);
+	// });
 
 	// If correct-answer is indeed selected, then add 1 to correctAnswers counter
 
@@ -86,7 +74,14 @@ function checkAnswers() {
 	// 	correctAnswers++;
 	// 	console.log("There are " + correctAnswers + "correct answers");
 	// }
-}
+
+
+	// console.log("You have " + correctAnswers + " correct answers so far");
+
+	// var correct = "<p>You have </p>" + correctAnswers + " <p>correct answers so far</p>";
+	// document.querySelector("#scorekeeper").innerHMTL = correct;
+
+};
 
 // Shows you your scores
 
