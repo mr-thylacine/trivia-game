@@ -17,7 +17,6 @@ var incorrectAnswers = 0;
 function countdown() {
 	stopTime = setInterval(decrement, 1000);
 	decrement();
-	checkAnswers();
 }
 
 // Makes time continue to decrement by 1 second until time = 0, then STOP counting!
@@ -35,6 +34,7 @@ function decrement() {
 		stop();
 		alert("STOP.");
 		alert("Hammer time!");
+		checkAnswers();
 	}
 
 	// Testing purposes
@@ -51,7 +51,23 @@ function stop() {
 
 function checkAnswers() {
 
-	// Checks to see if the class correct-answer (in each question) is selected
+	// Checks to see if data-checkanswers = "correct" (in each question) is selected
+	$("radio").on("click", function() {
+			if ("data-checkanswer" === true) {
+				correctAnswers++;
+				console.log("the " + correctAnswers);
+			}
+
+	});
+
+
+
+
+	if ("data-checkanswer" == "correct") {
+		correctAnswers++;
+		console.log(correctAnswers);
+		console.log("You have " + correctAnswers + " correct answers!");
+	}
 
 	$("input").on("click", function() {
 
@@ -66,22 +82,22 @@ function checkAnswers() {
 
 	// Else, (OR, use incorrect-answer class? - not yet included in HTML), add 1 to incorrectAnswers counter
 	
-	if ($(".correct-answer").on("click") === true) {
-		correctAnswers++;
-		console.log("There are " + correctAnswers + "correct answers");
-	}
+	// if ($(".correct-answer").on("click") === true) {
+	// 	correctAnswers++;
+	// 	console.log("There are " + correctAnswers + "correct answers");
+	// }
 }
-
-checkAnswers();
 
 // Shows you your scores
 
-function scorePage() {
+// function scorePage() {
 
-	// Once time is up (time = 0), transition to the score page
+// 	// Once time is up (time = 0), transition to the score page
 
-	// Use jQuery/innerHMTL to overwrite entire page?
+// 	// Use jQuery/innerHMTL to overwrite entire page?
 
-}
+// }
 
 countdown();
+
+checkAnswers();
