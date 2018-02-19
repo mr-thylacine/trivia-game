@@ -35,21 +35,48 @@
 
 		<form>
 
+			<!-- LEO'S CODE -->
+
+			<!-- Select the class based on user's click, then look at the values attached to that class, reports back with the chosen values (using ` marks?) -->
+
+			<input class='btn' type='radio' name='question1' value='1, 1'>Q1/A1</input>
+ 			<input class='btn' type='radio' name='question1' value='1, 2'>Q1/A2</input>
+
+			<br><br>
+
+			<!-- MICHELLE'S CODE -->
+
+			<!-- Attempted to use data-* attributes (custom HTML attribues) but couldn't figure out how to link them to the JS -->
+
 			<!-- input type ... name ... value ... checked (optional) -->
-			<input type="radio" name="q1" value="daffodils" data-checkanswer="correct" class="correct-answer">
+
+			<input type="radio" name="q1" value="daffodils, correct" class="correct-answer">
 				Daffodils
-			<input type="radio" name="q1" value="petunias" data-checkanswer="incorrect" class="incorrect-answer">
+			<input type="radio" name="q1" value="petunias, incorrect" class="incorrect-answer">
 				Petunias
-			<input type="radio" name="q1" value="roses" data-checkanswer="incorrect" class="incorrect-answer">
+			<input type="radio" name="q1" value="roses, incorrect" class="incorrect-answer">
 				Roses
-			<input type="radio" name="q1" value="daisies" data-checkanswer="incorrect" class="incorrect-answer">
+			<input type="radio" name="q1" value="daisies, incorrect" class="incorrect-answer">
 				Daisies
 
-<div id="q1-checked">Your answer is <span class="span-q1-checked"></span></div>
+			<div id="q1-checked">Your answer is <span class="span-q1-checked"></span></div>
 
-<br>
+			<br>
 
+			<input type="radio" name="q2" value="lynx, correct" class="correct-answer">
+				Lynx
+			<input type="radio" name="q2" value="bobcat, incorrect" class="incorrect-answer">
+				Bobcat
+			<input type="radio" name="q2" value="mountain-lion, incorrect" class="incorrect-answer">
+				Mountain lion
+			<input type="radio" name="q2" value="clouded-leopard, incorrect" class="incorrect-answer">
+				Clouded leopard
 
+			<div id="q2-checked">Your answer is <span class="span-q2-checked"></span></div>
+
+		</form>
+
+<!-- CODE I TESTED AT ONE POINT OR ANOTHER
 
 				<input type="radio" name="q2" value="lynx" data-checkanswer="correct" class="correct-answer">
 				lynx
@@ -61,6 +88,7 @@
 				clouded leopard
 
 				<div id="q2-checked">Your answer is <span class="span-q2-checked"></span></div>
+ -->
 
 		</form>
 
@@ -72,6 +100,8 @@
 
 	<div id="scorekeeper">
 		You scored: <span id="span-correct-answers"></span>
+		<br>
+		You got this many questions wrong: <span id="span-incorrect-answers"></span></div>
 	</div>
 
 <script src="assets/javascript/app.js"></script>
