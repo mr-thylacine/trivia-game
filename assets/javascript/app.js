@@ -12,15 +12,17 @@ var stopTime;
 
 // Declares variables for judging the correct-ness of the userChoice
 
-// var userChoice;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 
-var value;
-	// var question_num;
-	// var answer_index;
-var questionArray;
-var answerArray;
+// Following 3 variables are used in the checkAnswers() function
+// value - Refers to the values denoted in the radio buttons in HTML
+// question_num - Refers to the first item in value (value[0])
+// answer_index - Refers to the second item in value (value[1])
+
+var value;					
+var question_num;
+var answer_index;
 
 // countdown() tells us how quickly we should decrement time (in this case, by 1 second each time)
 
@@ -29,9 +31,8 @@ function countdown() {
 	decrement();
 }
 
-// Makes time continue to decrement by 1 second until time = 0, then STOP counting!
-
-// Updates the in-browser timer to show how many seconds the player has left
+// decrement() makes time continue to decrement by 1 second until time = 0, then STOP counting!
+// decrement() updates the in-browser timer to show how many seconds the player has left
 
 function decrement() {
 
@@ -43,20 +44,12 @@ function decrement() {
 	if (time === 0) {
 		stop();
 		alert("STOP.");
-		// alert("Hammer time!");
-		// checkAnswers();
-	$("#span-incorrect-answers").text(incorrectAnswers);
-	$("#span-correct-answers").text(correctAnswers);
+		scoreCounter();
 	}
-
-
-
-	// Testing purposes
-	console.log(time);
 
 }
 
-// This function uses stopTime to... stop() time *ROLL CREDITS*
+// stop() uses stopTime to... stop() time *ROLL CREDITS*
 
 function stop() {
 	clearInterval(stopTime);
@@ -66,135 +59,33 @@ function stop() {
 
 function checkAnswers() {
 
-/* Michelle's understanding:
-	
-	When user clicks on a button, a function happens. Three variables are created:
-	
-	*1) The value is set to whatever information the class .btn has, then grabs the input's value using .val(). And then .split() removes the comma using split(",")
-	
-	 2) Then the other two variables are created. Each of them will hold an array.
-
-	 2a) question_num will reach into the value that the button has and return the first item (index zero) and hold that item (if value 1, 1 - then index 0 is the first 1. So the value[0] is 1.)
-
-	2b) Same with answer_index. This holds value[1], which means the 2nd item (index 1) of whatever value has (value[1] = 1).
-
-	3) And then the console log reports back (using `tick marks`?!) with two things in objects - the question_num and the answer_index. But why are they objects and then grabbed with $?
-
-	^^^ 3) CLARIFIED: Using the `tickmarks` just gives everything within it a different syntax, so ${thisThing} is a special way to "write" + thisThing + "if you didn't use concatenation with a + sign.""
-
-*/
-
-	// Leo's code
-
-	// $('.btn').click(function () {
- //    value = $(this).val().split(",");
- //    question_num = value[0];
- //    answer_index = value[1];
- //    console.log(`Question: ${question_num}, Answer: ${answer_index}`);
- //    });
-
-	// Michelle's code (based off of Leo's code)
+	$(".btn").on("click", function() {
+		value = $(this).data().split(",");
+		value = value[0];
+		console.log(`the value is... ${value}`);
+		$(".span-q1-checked").text(value);
+		$(".span-q2-checked").text(value);
+	});
 
 	$(".correct-answer").on("click", function() {
-
 		value = $(this).val().split(",");
 		question_num = value[0];
 		answer_index =  value[1];
-		console.log(`Question: ${question_num}, Answer is ${answer_index}`);
-		console.log("value is " + value[1]);
-
-	// 	console.log(`answerArray is actually ${answerArray}`);
-	// 	// correctAnswers++;
-	// 	// console.log(`total correct answers: ${correctAnswers}`);
-	// 	// console.log(answerArray);
-
-	// 	// console.log(answerArray.attr(answerArray.length-1));
-
-	// 	if(answerArray[answerArray.length-1] == 'correct'){
- // //do something
- // correctAnswers++;
- // console.log("correct answers" + correctAnswers);
-	// }else{
- // //something else. c
- // console.log("uefidn")
-	// }
-
+		correctAnswers++;
+		console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
+		console.log("Value is " + value[1]);
 	});
-
-	// How to make it so that the answer counters don't keep accumulating every time the user clicks on a button?!
 
 	$(".incorrect-answer").on("click", function() {
 		value = $(this).val().split(",");
 		question_num = value[0];
 		answer_index = value[1];
-		console.log(`Question: ${question_num}, Answer is ${answer_index}`);
-		console.log("value is " + value[1]);
-		// incorrectAnswers++;
-		// console.log(`total incorrect answers: ${incorrectAnswers}`);
-		// console.log(answerArray);
-
+		incorrectAnswers++;
+		console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
+		console.log("Value is " + value[1]);
 	});
 
-
-
-
-	// if (value[] === "correct") {
-	// 		correctAnswers++;
-	// 	console.log(`total correct answers: ${correctAnswers}`);
-	// 	console.log(answerArray);
-	// }
-
-		// 		incorrectAnswers++;
-		// console.log(`total incorrect answers: ${incorrectAnswers}`);
-		// console.log(answerArray);
-
-
-	//// EVERY OTHER PIECE OF CODE I TRIED ////
-
-	// $(".span-q1-checked").html()
-
-	// var sssscorrect = $("input[type='radio'][name='q1']:checked").val('daffodils');
-
-	// console.log("your answer " + sssscorrect.value);
-
-	// var correct = $(".correct-answer");
-
-	// console.log("this works " + JSON.stringify(sssscorrect));
-
-	// var correctUserChoice = $(".correct-answer:checked");
-	// var incorrectUserChoice = $(".incorrect-answer:checked");
-
-
-	// $("#game input").on("change", function() {
-	// 		var userChoice = $('input[name=q1]:checked', '#game').val();
-	// 		console.log(userChoice);
-	// });
-
-	// if ($('input:radio:checked') === "correct") {
-
-	// 	correctAnswers++;
-	// 	console.log("You have " + correctAnswers + " correct answers");
-	// }
-
-	// if (incorrectUserChoice === true) {
-	// 	incorrectAnswers++;
-	// 	console.log("You have " + incorrectAnswers + " incorrect answers");
-	// }
-
-	// If correct-answer is indeed selected, then add 1 to correctAnswers counter
-
-	// Else, (OR, use incorrect-answer class? - not yet included in HTML), add 1 to incorrectAnswers counter
-	
-	// if ($(".correct-answer").on("click") === true) {
-	// 	correctAnswers++;
-	// 	console.log("There are " + correctAnswers + "correct answers");
-	// }
-
-
-	// console.log("You have " + correctAnswers + " correct answers so far");
-
-	// var correct = "<p>You have </p>" + correctAnswers + " <p>correct answers so far</p>";
-	// document.querySelector("#scorekeeper").innerHMTL = correct;
+	scoreCounter();
 
 };
 
@@ -212,7 +103,7 @@ function scoreCounter() {
 
 }
 
-// Shows you your scores
+// scorePage() shows you your scores
 
 function scorePage() {
 
