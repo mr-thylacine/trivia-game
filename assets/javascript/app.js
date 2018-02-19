@@ -16,6 +16,16 @@ var userChoice;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 
+
+
+
+
+	var value;
+	var question_num;
+	var answer_index;
+	var questionArray;
+	var answerArray;
+
 // countdown() tells us how quickly we should decrement time (in this case, by 1 second each time)
 
 function countdown() {
@@ -34,13 +44,11 @@ function decrement() {
 	// Continue to update the on-screen timer
 	$("#countdown-timer").html(time);
 
-
-
 	if (time === 0) {
 		stop();
 		alert("STOP.");
 		// alert("Hammer time!");
-		checkAnswers();
+		// checkAnswers();
 	}
 
 	// Testing purposes
@@ -72,13 +80,10 @@ function checkAnswers() {
 
 	3) And then the console log reports back (using `tick marks`?!) with two things in objects - the question_num and the answer_index. But why are they objects and then grabbed with $?
 
+	^^^ 3) CLARIFIED: Using the `tickmarks` just gives everything within it a different syntax, so ${thisThing} is a special way to "write" + thisThing + "if you didn't use concatenation with a + sign.""
+
 */
 
-	var value;
-	var question_num;
-	var answer_index;
-	var questionArray;
-	var answerArray;
 
 	// Leo's code
 
@@ -92,41 +97,25 @@ function checkAnswers() {
 	// Michelle's code (based off of Leo's code)
 
 	$(".correct-answer").on("click", function() {
+
 		value = $(this).val().split(",");
 		questionArray = value[0];
 		answerArray =  value[1];
 		console.log(`Question: ${questionArray}, Answer is ${answerArray}`);
 		console.log("value is " + value[1]);
+		correctAnswers++;
+	});
 
 	$(".incorrect-answer").on("click", function() {
-		value = $(this).val().split(",")
+		value = $(this).val().split(",");
 		questionArray = value[0];
 		answerArray = value[1];
 		console.log(`Question: ${questionArray}, Answer is ${answerArray}`);
 		console.log("value is " + value[1]);
-	})
-
-		if (value[1]) {
-			console.log("correct answer");
-			correctAnswers++;
-			console.log(correctAnswers);
-		} else {
-			incorrectAnswers++;
-			console.log("wrong answer");
-			console.log("wrong answers: " + incorrectAnswers);
-		}
-
+		incorrectAnswers++;
 	});
 
-	// Tests to see if amount of correct answers show up
-
-	console.log("total correct answers: " + correctAnswers);
-	console.log("total incorrect answers: " + incorrectAnswers);
-
-	// Shows total number of correct answers on the DOM
-
-	$("#span-correct-answers").text(correctAnswers);
-	$("#span-incorrect-answers").text(incorrectAnswers);
+	scoreCounter();
 
 	//// EVERY OTHER PIECE OF CODE I TRIED ////
 
@@ -179,6 +168,16 @@ function checkAnswers() {
 
 function scoreCounter() {
 
+	// Tests to see if amount of correct answers show up
+
+	console.log("total correct answers: " + correctAnswers);
+	console.log("total incorrect answers: " + incorrectAnswers);
+
+	// Shows total number of correct answers on the DOM
+
+	$("#span-correct-answers").text(correctAnswers);
+	$("#span-incorrect-answers").text(incorrectAnswers);
+
 }
 
 // Shows you your scores
@@ -194,5 +193,7 @@ function scorePage() {
 countdown();
 
 checkAnswers();
+
+scoreCounter();
 
 });
