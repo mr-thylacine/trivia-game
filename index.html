@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 	<meta charset="UTF-8">
 
 	<title>Inexplicably difficult final</title>
 
-	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 </head>
+
 <body>
 
 	<h1>I hope you brought painkillers or something like that</h1>
@@ -22,67 +27,55 @@
 	<h6>Stop reading this!!! You're wasting valuable time!!!</h6>
 	<h1>GO!</h1>
 
-
+	<br>
 
 	<div id="countdown-timer"></div>
 
+	<div id="game">
 
-<div id="game">
+		<form>
+
+			<!-- input type ... name ... value ... checked (optional) -->
+			<input type="radio" name="q1" value="daffodils" data-checkanswer="correct" class="correct-answer">
+				Daffodils
+			<input type="radio" name="q1" value="petunias" data-checkanswer="incorrect" class="incorrect-answer">
+				Petunias
+			<input type="radio" name="q1" value="roses" data-checkanswer="incorrect" class="incorrect-answer">
+				Roses
+			<input type="radio" name="q1" value="daisies" data-checkanswer="incorrect" class="incorrect-answer">
+				Daisies
+
+<div id="q1-checked">Your answer is <span class="span-q1-checked"></span></div>
+
+<br>
 
 
-	<form>
 
-	<!-- input type ... name ... value ... checked (optional) -->
-	<input type="radio" name="q1" value="daffodils" data-checkanswer="correct">
-		Daffodils
-	<input type="radio" name="q1" value="petunias" data-checkanswer="incorrect">
-		Petunias
-	<input type="radio" name="q1" value="roses" data-checkanswer="incorrect">
-		Roses
-	<input type="radio" name="q1" value="daisies" data-checkanswer="incorrect">
-		Daisies
+				<input type="radio" name="q2" value="lynx" data-checkanswer="correct" class="correct-answer">
+				lynx
+			<input type="radio" name="q2" value="bobcat" data-checkanswer="incorrect" class="incorrect-answer">
+				bobcat
+			<input type="radio" name="q2" value="mountain-lion" data-checkanswer="incorrect" class="incorrect-answer">
+				mountain lion
+			<input type="radio" name="q2" value="clouded-leopard" data-checkanswer="incorrect" class="incorrect-answer">
+				clouded leopard
 
-		<p class="cat">dsjoifsdjgos</p>
-<!-- 
-	<p>
+				<div id="q2-checked">Your answer is <span class="span-q2-checked"></span></div>
 
-	<input type="radio" name="q2" value=" correct">
-		<label for="serval">Serval</label>
-	<input type="radio" name="q2" value="incorrect">
-		<label for="bengal">Bengal</label>
-	<input type="radio" name="q2" value="incorrect">
-		<label for="leopard">Leopard cat</label>
-	<input type="radio" name="q2" value="incorrect">
-		<label for="turkish-van">Turkish Van</label>	
-	<p>
+		</form>
 
-	<input type="radio" name="q3" value=" correct">
-		<label for="meow">meow</label>
-	<input type="radio" name="q3" value="incorrect">
-		<label for="bark">bark</label>
-	<input type="radio" name="q3" value="incorrect">
-		<label for="chirp">chirp</label>
-	<input type="radio" name="q3" value="incorrect">
-		<label for="howl">howl</label>
-	
-<p>
+	</div>
 
-	<input type="radio" name="q4" value=" correct">
-		<label for="paprika">paprika</label>
-	<input type="radio" name="q4" value="incorrect">
-		<label for="cumin">cumin</label>
-	<input type="radio" name="q4" value="incorrect">
-		<label for="cayenne">cayenne</label>
-	<input type="radio" name="q4" value="incorrect">
-		<label for="cinnamon">cinnamon</label>			 -->
-	</form>
+	<br>
 
-</div>
+	<!-- The scorekeeper! -->
 
-<div id="scorekeeper">sajdioefjo counter testing</div>
-	
+	<div id="scorekeeper">
+		You scored: <span id="span-correct-answers"></span>
+	</div>
 
-	<script src="assets/javascript/app.js"></script>
+<script src="assets/javascript/app.js"></script>
 
 </body>
+
 </html>

@@ -1,3 +1,7 @@
+// Ready the set and go!
+
+$(document).ready(function() {
+
 // Declares how much time (in seconds) you have left to live. Consult countdown() function to see decrement by 1000 ms (i.e., 1 second each time)
 
 var time = 6;
@@ -8,7 +12,7 @@ var stopTime;
 
 // Declares variables for judging the correct-ness of the userChoice
 
-var userChoice = true;
+var userChoice;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 
@@ -40,7 +44,6 @@ function decrement() {
 	// Testing purposes
 	console.log(time);
 
-
 }
 
 // This function uses stopTime to... stop() time *ROLL CREDITS*
@@ -52,19 +55,29 @@ function stop() {
 // checkAnswers() to see if user's answers are correct (or not...)
 
 function checkAnswers() {
-var cat = 
-$(".cat").on("click", function() {
-	console.log("clck");
-});
 
-	// $("input").on("click", function() {
+	var correctUserChoice = $(".correct-answer:checked");
+	var incorrectUserChoice = $(".incorrect-answer:checked");
 
-	// 	console.log("You checked " + $("input:checked").val());
 
-	// 	if ($("correct") === true)
-	// 	correctAnswers++;
-	// 	console.log(correctAnswers);
-	// });
+	$("#game input").on("change", function() {
+			var userChoice = $('input[name=q1]:checked', '#game').val();
+			console.log(userChoice);
+	});
+
+	if ()
+
+
+	if ($('input:radio:checked') === "correct") {
+
+		correctAnswers++;
+		console.log("You have " + correctAnswers + " correct answers");
+	}
+
+	if (incorrectUserChoice === true) {
+		incorrectAnswers++;
+		console.log("You have " + incorrectAnswers + " incorrect answers");
+	}
 
 	// If correct-answer is indeed selected, then add 1 to correctAnswers counter
 
@@ -83,16 +96,22 @@ $(".cat").on("click", function() {
 
 };
 
+function scoreCounter() {
+	
+}
+
 // Shows you your scores
 
-// function scorePage() {
+function scorePage() {
 
-// 	// Once time is up (time = 0), transition to the score page
+	// Once time is up (time = 0), transition to the score page
 
-// 	// Use jQuery/innerHMTL to overwrite entire page?
+	// Use jQuery/innerHMTL to overwrite entire page?
 
-// }
+}
 
 countdown();
 
 checkAnswers();
+
+});
