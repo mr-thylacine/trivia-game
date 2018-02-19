@@ -12,19 +12,15 @@ var stopTime;
 
 // Declares variables for judging the correct-ness of the userChoice
 
-var userChoice;
+// var userChoice;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 
-
-
-
-
-	var value;
-	var question_num;
-	var answer_index;
-	var questionArray;
-	var answerArray;
+var value;
+	// var question_num;
+	// var answer_index;
+var questionArray;
+var answerArray;
 
 // countdown() tells us how quickly we should decrement time (in this case, by 1 second each time)
 
@@ -49,7 +45,11 @@ function decrement() {
 		alert("STOP.");
 		// alert("Hammer time!");
 		// checkAnswers();
+	$("#span-incorrect-answers").text(incorrectAnswers);
+	$("#span-correct-answers").text(correctAnswers);
 	}
+
+
 
 	// Testing purposes
 	console.log(time);
@@ -84,7 +84,6 @@ function checkAnswers() {
 
 */
 
-
 	// Leo's code
 
 	// $('.btn').click(function () {
@@ -99,23 +98,56 @@ function checkAnswers() {
 	$(".correct-answer").on("click", function() {
 
 		value = $(this).val().split(",");
-		questionArray = value[0];
-		answerArray =  value[1];
-		console.log(`Question: ${questionArray}, Answer is ${answerArray}`);
+		question_num = value[0];
+		answer_index =  value[1];
+		console.log(`Question: ${question_num}, Answer is ${answer_index}`);
 		console.log("value is " + value[1]);
-		correctAnswers++;
+
+	// 	console.log(`answerArray is actually ${answerArray}`);
+	// 	// correctAnswers++;
+	// 	// console.log(`total correct answers: ${correctAnswers}`);
+	// 	// console.log(answerArray);
+
+	// 	// console.log(answerArray.attr(answerArray.length-1));
+
+	// 	if(answerArray[answerArray.length-1] == 'correct'){
+ // //do something
+ // correctAnswers++;
+ // console.log("correct answers" + correctAnswers);
+	// }else{
+ // //something else. c
+ // console.log("uefidn")
+	// }
+
 	});
+
+	// How to make it so that the answer counters don't keep accumulating every time the user clicks on a button?!
 
 	$(".incorrect-answer").on("click", function() {
 		value = $(this).val().split(",");
-		questionArray = value[0];
-		answerArray = value[1];
-		console.log(`Question: ${questionArray}, Answer is ${answerArray}`);
+		question_num = value[0];
+		answer_index = value[1];
+		console.log(`Question: ${question_num}, Answer is ${answer_index}`);
 		console.log("value is " + value[1]);
-		incorrectAnswers++;
+		// incorrectAnswers++;
+		// console.log(`total incorrect answers: ${incorrectAnswers}`);
+		// console.log(answerArray);
+
 	});
 
-	scoreCounter();
+
+
+
+	// if (value[] === "correct") {
+	// 		correctAnswers++;
+	// 	console.log(`total correct answers: ${correctAnswers}`);
+	// 	console.log(answerArray);
+	// }
+
+		// 		incorrectAnswers++;
+		// console.log(`total incorrect answers: ${incorrectAnswers}`);
+		// console.log(answerArray);
+
 
 	//// EVERY OTHER PIECE OF CODE I TRIED ////
 
