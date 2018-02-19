@@ -56,28 +56,35 @@ function stop() {
 
 function checkAnswers() {
 
-	var correctUserChoice = $(".correct-answer:checked");
-	var incorrectUserChoice = $(".incorrect-answer:checked");
+	var correct = $(".correct-answer");
 
-
-	$("#game input").on("change", function() {
-			var userChoice = $('input[name=q1]:checked', '#game').val();
-			console.log(userChoice);
-	});
-
-	if ()
-
-
-	if ($('input:radio:checked') === "correct") {
-
-		correctAnswers++;
-		console.log("You have " + correctAnswers + " correct answers");
+	if (correct === "correct-answer") {
+		console.log("cool");
 	}
 
-	if (incorrectUserChoice === true) {
-		incorrectAnswers++;
-		console.log("You have " + incorrectAnswers + " incorrect answers");
-	}
+
+	// var correctUserChoice = $(".correct-answer:checked");
+	// var incorrectUserChoice = $(".incorrect-answer:checked");
+
+
+	// $("#game input").on("change", function() {
+	// 		var userChoice = $('input[name=q1]:checked', '#game').val();
+	// 		console.log(userChoice);
+	// });
+
+	// if ()
+
+
+	// if ($('input:radio:checked') === "correct") {
+
+	// 	correctAnswers++;
+	// 	console.log("You have " + correctAnswers + " correct answers");
+	// }
+
+	// if (incorrectUserChoice === true) {
+	// 	incorrectAnswers++;
+	// 	console.log("You have " + incorrectAnswers + " incorrect answers");
+	// }
 
 	// If correct-answer is indeed selected, then add 1 to correctAnswers counter
 
@@ -97,7 +104,7 @@ function checkAnswers() {
 };
 
 function scoreCounter() {
-	
+
 }
 
 // Shows you your scores
