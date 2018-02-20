@@ -45,6 +45,7 @@ function decrement() {
 		stop();
 		alert("STOP.");
 		scoreCounter();
+		scorePage();
 	}
 
 }
@@ -59,38 +60,44 @@ function stop() {
 
 function checkAnswers() {
 
-	$(".btn").on("click", function() {
+	// $(".btn").on("click", function() {
+	// 	value = $(this).val().split(", ");
+	// 	question_num = value[0];
+	// 	answer_index = value[1];
+	// 	console.log(answer_index);
+	// 	if (answer_index === "correct") {
+	// 		correctAnswers++;
+	// 		console.log(`You have ${correctAnswers} correct answers so far.`);
+	// 	}
+	// 	if (answer_index === "incorrect") {
+	// 		incorrectAnswers++;
+	// 		console.log(`You have ${incorrectAnswers} incorrect answers so far.`);
+	// 	}
+	// });
+
+	$(".correct-answer").on("click", function() {
+		value = $(this).val().split(", ");
+		question_num = value[0];
+		answer_index =  value[1];
+		correctAnswers++;
+		console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
+		console.log("Value is " + value[1]);
+		alert("♥");
+	});
+
+	$(".incorrect-answer").on("click", function() {
 		value = $(this).val().split(", ");
 		question_num = value[0];
 		answer_index = value[1];
-		console.log(answer_index);
-		if (answer_index === "correct") {
-			correctAnswers++;
-			console.log(`You have ${correctAnswers} correct answers so far.`);
-		}
-		if (answer_index === "incorrect") {
-			incorrectAnswers++;
-			console.log(`You have ${incorrectAnswers} incorrect answers so far.`);
+		incorrectAnswers++;
+		console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
+		console.log("Value is " + value[1]);
+
+		if (answer_index !== "correct") {
+			alert("Don't even think about it.");
+			alert("He isn't the right choice.");
 		}
 	});
-
-	// $(".correct-answer").on("click", function() {
-	// 	value = $(this).val().split(",");
-	// 	question_num = value[0];
-	// 	answer_index =  value[1];
-	// 	correctAnswers++;
-	// 	console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
-	// 	console.log("Value is " + value[1]);
-	// });
-
-	// $(".incorrect-answer").on("click", function() {
-	// 	value = $(this).val().split(",");
-	// 	question_num = value[0];
-	// 	answer_index = value[1];
-	// 	incorrectAnswers++;
-	// 	console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
-	// 	console.log("Value is " + value[1]);
-	// });
 
 	scoreCounter();
 
@@ -105,7 +112,7 @@ function scoreCounter() {
 
 	// Shows total number of correct answers on the DOM
 
-	$("#span-correct-answers").text(correctAnswers);
+	$("#span-correct-answers").text(`you have ${correctAnswers}`);
 	$("#span-incorrect-answers").text(incorrectAnswers);
 
 }
@@ -115,7 +122,19 @@ function scoreCounter() {
 function scorePage() {
 
 	// Once time is up (time = 0), transition to the score page
+	$(".outcome-page").on("click", function() {
+		var correctCounter = correctAnswers;
+		var incorrectCounter = incorrectAnswers;
+		$("#ultimate-game-page").html(`you have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers`);
+		scoreCounter();
+	});
 
+	if (time === 0) {
+		var correctCounter = correctAnswers;
+		var incorrectCounter = incorrectAnswers;
+		$("#ultimate-game-page").html(`you have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers`);
+		scoreCounter();
+	}
 	// Use jQuery/innerHMTL to overwrite entire page?
 
 }
@@ -125,5 +144,7 @@ countdown();
 checkAnswers();
 
 scoreCounter();
+
+scorePage();
 
 });
