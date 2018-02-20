@@ -60,30 +60,37 @@ function stop() {
 function checkAnswers() {
 
 	$(".btn").on("click", function() {
-		value = $(this).data().split(",");
-		value = value[0];
-		console.log(`the value is... ${value}`);
-		$(".span-q1-checked").text(value);
-		$(".span-q2-checked").text(value);
-	});
-
-	$(".correct-answer").on("click", function() {
-		value = $(this).val().split(",");
-		question_num = value[0];
-		answer_index =  value[1];
-		correctAnswers++;
-		console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
-		console.log("Value is " + value[1]);
-	});
-
-	$(".incorrect-answer").on("click", function() {
-		value = $(this).val().split(",");
+		value = $(this).val().split(", ");
 		question_num = value[0];
 		answer_index = value[1];
-		incorrectAnswers++;
-		console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
-		console.log("Value is " + value[1]);
+		console.log(answer_index);
+		if (answer_index === "correct") {
+			correctAnswers++;
+			console.log(`You have ${correctAnswers} correct answers so far.`);
+		}
+		if (answer_index === "incorrect") {
+			incorrectAnswers++;
+			console.log(`You have ${incorrectAnswers} incorrect answers so far.`);
+		}
 	});
+
+	// $(".correct-answer").on("click", function() {
+	// 	value = $(this).val().split(",");
+	// 	question_num = value[0];
+	// 	answer_index =  value[1];
+	// 	correctAnswers++;
+	// 	console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
+	// 	console.log("Value is " + value[1]);
+	// });
+
+	// $(".incorrect-answer").on("click", function() {
+	// 	value = $(this).val().split(",");
+	// 	question_num = value[0];
+	// 	answer_index = value[1];
+	// 	incorrectAnswers++;
+	// 	console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
+	// 	console.log("Value is " + value[1]);
+	// });
 
 	scoreCounter();
 
