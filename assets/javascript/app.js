@@ -59,7 +59,7 @@ function stop() {
 
 function checkAnswers() {
 
-var userAnswersQ1 = [];
+
 
 	$(".correct-answer").on("click", function() {
 		value = $(this).val().split(", ");
@@ -67,32 +67,26 @@ var userAnswersQ1 = [];
 		question_num = value[0];
 		answer_index =  value[1];
 
-		userAnswersQ1.push(answer_index);
-
-		console.log("The question_num is " + question_num + " and the answer_index is " + answer_index);
-		console.log(userAnswersQ1);
-
-		if (userAnswersQ1[userAnswersQ1.length-1] === "correct") {
-			correctAnswers++;
-			if (correctAnswers > 1) {
-				correctAnswers--;
+		for (var i = 1; i < 5; i++) {
+			var radios = document.getElementsByName('q'+i);
+				for (var j = 0; j < radios.length; j++) {
+					var radio = radios[j];
+					if (radio.value && radio.checked) {
+						correctAnswers++;
+					}
+				}
 			}
-		}
-		// if (question_num === "wolf") {
-		// 	correctAnswers++;
-		// 	if (correctAnswers > 1) {
-		// 		correctAnswers--;
-		// 	}
-		// }
-		console.log("Correct answers: " + correctAnswers);
+		// correctAnswers++;
 	});
 
-	$(".incorrect-answer").on("click", function() {
-		value = $(this).val().split(", ");
-		question_num = value[0];
-		answer_index = value[1];
-		incorrectAnswers++;
-	});
+	// $(".incorrect-answer").on("click", function() {
+	// 	value = $(this).val().split(", ");
+	// 	question_num = value[0];
+	// 	answer_index = value[1];
+
+	// 	incorrectAnswers++;
+
+	// });
 
 };
 
