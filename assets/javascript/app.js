@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 // Declares how much time (in seconds) you have left to live. Consult countdown() function to see decrement by 1000 ms (i.e., 1 second each time)
 
-var time = 101;
+var time = 301;
 
 // stopTime helps us in the functions to... wait for it... stop... time...
 
@@ -59,11 +59,32 @@ function stop() {
 
 function checkAnswers() {
 
+var userAnswersQ1 = [];
+
 	$(".correct-answer").on("click", function() {
 		value = $(this).val().split(", ");
+
 		question_num = value[0];
 		answer_index =  value[1];
-		correctAnswers++;
+
+		userAnswersQ1.push(answer_index);
+
+		console.log("The question_num is " + question_num + " and the answer_index is " + answer_index);
+		console.log(userAnswersQ1);
+
+		if (userAnswersQ1[userAnswersQ1.length-1] === "correct") {
+			correctAnswers++;
+			if (correctAnswers > 1) {
+				correctAnswers--;
+			}
+		}
+		// if (question_num === "wolf") {
+		// 	correctAnswers++;
+		// 	if (correctAnswers > 1) {
+		// 		correctAnswers--;
+		// 	}
+		// }
+		console.log("Correct answers: " + correctAnswers);
 	});
 
 	$(".incorrect-answer").on("click", function() {
@@ -83,13 +104,23 @@ function scorePage() {
 
 	$(".outcome-page").on("click", function() {
 		stop();
-		$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers`);
+		$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers.`);
+		if (correctAnswers === 4) {
+			$("#ultimate-game-page").append("<br><br>Perfect ending.");
+		} else {
+			$("#ultimate-game-page").append("<br><br>Bad ending.<br><br>He never let you leave. He devoured you shortly after you went to bed.<br><br>At least you tasted good... right?");
+		}
 	});
 
 	if (time === 0) {
 		stop();
-		$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers`);	}
-
+		$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers.`);
+		if (correctAnswers === 4) {
+			$("#ultimate-game-page").append("<br><br>Perfect ending.");
+		} else {
+			$("#ultimate-game-page").append("<br><br>Bad ending.<br><br>He never let you leave. He devoured you shortly after you went to bed.<br><br>At least you tasted good... right?");
+		}
+	}
 }
 
 countdown();
