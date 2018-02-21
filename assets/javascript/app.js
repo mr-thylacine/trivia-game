@@ -43,8 +43,7 @@ function decrement() {
 
 	if (time === 0) {
 		stop();
-		alert("STOP.");
-		scoreCounter();
+		alert("Are you done choosing yet?");
 		scorePage();
 	}
 
@@ -65,8 +64,6 @@ function checkAnswers() {
 		question_num = value[0];
 		answer_index =  value[1];
 		correctAnswers++;
-		console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
-		console.log("Value is " + value[1]);
 	});
 
 	$(".incorrect-answer").on("click", function() {
@@ -74,69 +71,30 @@ function checkAnswers() {
 		question_num = value[0];
 		answer_index = value[1];
 		incorrectAnswers++;
-		console.log(`Choice: ${question_num}, Answer: ${answer_index}`);
-		console.log("Value is " + value[1]);
 	});
 
-	scoreCounter();
-
 };
-
-function scoreCounter() {
-
-	// Tests to see if amount of correct answers show up
-
-	console.log("total correct answers: " + correctAnswers);
-	console.log("total incorrect answers: " + incorrectAnswers);
-
-	// Shows total number of correct answers on the DOM
-
-	$("#span-correct-answers").text(`you have ${correctAnswers}`);
-	$("#span-incorrect-answers").text(incorrectAnswers);
-
-}
 
 // scorePage() shows you your scores
 
 function scorePage() {
 
-	// Once time is up (time = 0), transition to the score page
+	// Once the user clicks on the Submit button OR if time is up (time = 0), transition to the score page
+
 	$(".outcome-page").on("click", function() {
 		stop();
-		var correctCounter = correctAnswers;
-		var incorrectCounter = incorrectAnswers;
-		$("#ultimate-game-page").html("You have " + correctAnswers + " correct answers and " +incorrectAnswers + " incorrect answers.");
-
-		$("a.back").click(function() {
-			parent.history.back();
-			return false;
-		});
-
-		
-
-		// $("button#return-button").on("click", function() {
-		// 	preventDefault();
-		// 	window.history.back();
-		// });
-
-		scoreCounter();
+		$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers`);
 	});
 
 	if (time === 0) {
 		stop();
-		var correctCounter = correctAnswers;
-		var incorrectCounter = incorrectAnswers;
-		$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers`);
-		scoreCounter();
-	}
+		$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers`);	}
 
 }
 
 countdown();
 
 checkAnswers();
-
-scoreCounter();
 
 scorePage();
 
