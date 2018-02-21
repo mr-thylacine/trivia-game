@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 // Declares how much time (in seconds) you have left to live. Consult countdown() function to see decrement by 1000 ms (i.e., 1 second each time)
 
-var time = 100;
+var time = 5;
 
 // stopTime helps us in the functions to... wait for it... stop... time...
 
@@ -15,7 +15,7 @@ var stopTime;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 
-// Following 3 variables are used in the checkAnswers() function
+// The following 3 variables are used in the checkAnswers() function
 // value - Refers to the values denoted in the radio buttons in HTML
 // question_num - Refers to the first item in value (value[0])
 // answer_index - Refers to the second item in value (value[1])
@@ -60,21 +60,6 @@ function stop() {
 
 function checkAnswers() {
 
-	// $(".btn").on("click", function() {
-	// 	value = $(this).val().split(", ");
-	// 	question_num = value[0];
-	// 	answer_index = value[1];
-	// 	console.log(answer_index);
-	// 	if (answer_index === "correct") {
-	// 		correctAnswers++;
-	// 		console.log(`You have ${correctAnswers} correct answers so far.`);
-	// 	}
-	// 	if (answer_index === "incorrect") {
-	// 		incorrectAnswers++;
-	// 		console.log(`You have ${incorrectAnswers} incorrect answers so far.`);
-	// 	}
-	// });
-
 	$(".correct-answer").on("click", function() {
 		value = $(this).val().split(", ");
 		question_num = value[0];
@@ -117,19 +102,33 @@ function scorePage() {
 
 	// Once time is up (time = 0), transition to the score page
 	$(".outcome-page").on("click", function() {
+		stop();
 		var correctCounter = correctAnswers;
 		var incorrectCounter = incorrectAnswers;
-		$("#ultimate-game-page").html(`you have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers`);
+		$("#ultimate-game-page").html("You have " + correctAnswers + " correct answers and " +incorrectAnswers + " incorrect answers.");
+
+		$("a.back").click(function() {
+			parent.history.back();
+			return false;
+		});
+
+		
+
+		// $("button#return-button").on("click", function() {
+		// 	preventDefault();
+		// 	window.history.back();
+		// });
+
 		scoreCounter();
 	});
 
 	if (time === 0) {
+		stop();
 		var correctCounter = correctAnswers;
 		var incorrectCounter = incorrectAnswers;
-		$("#ultimate-game-page").html(`you have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers`);
+		$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers`);
 		scoreCounter();
 	}
-	// Use jQuery/innerHMTL to overwrite entire page?
 
 }
 
