@@ -11,5 +11,41 @@ body {
 	width: 55%;
 	float: right;
 	color: #fff;
-	margin: 2% 5%;
+	margin: 2% 5%; 
+/*	margin: 2% 80px 2% 5%;*/
+/*	font-family: 'Junge', serif; */	
+}
+
+h3 {
+	font-family: 'Bad Script', cursive;
+	font-size: 1.4em;
+	font-weight: bold;
+	line-height: 2em;
+}
+
+p {
+	margin: 10px 25px 0 25px;
+	padding: 0 0 20px 10px;
+	line-height: 1.2em;
+	font-size: 1.3em;
+	font-family: 'Asar', serif;
+	letter-spacing: 0.02em;
+	border-left: 1px solid #EFA43B;
+
+}
+
+.choices-indent {
+	width: 100%;
+	margin: 0 25px;
+			padding: 0 0 0 10px;
+			border-left: 1px solid #EFA43B;
+}
+
+.p-choices {
+	font-family: 'Sintony', sans-serif;
+	line-height: 1.2em;
+	font-size: 1.2em;
+
+
+
 }
