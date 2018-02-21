@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 // Declares how much time (in seconds) you have left to live. Consult countdown() function to see decrement by 1000 ms (i.e., 1 second each time)
 
-var time = 5;
+var time = 101;
 
 // stopTime helps us in the functions to... wait for it... stop... time...
 

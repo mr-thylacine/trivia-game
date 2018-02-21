@@ -1,3 +1,15 @@
-#return-button {
-	display: none;
+body {
+	background-image: url('../images/wolf2.png');
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: -20% 15%;
+	background-color: #231B18;
+	background-size: 50%;
+}
+
+#ultimate-game-page {
+	width: 55%;
+	float: right;
+	color: #fff;
+	margin: 2% 5%;
 }
