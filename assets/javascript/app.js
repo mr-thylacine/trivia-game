@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 // Declares how much time (in seconds) you have left to live. Consult countdown() function to see decrement by 1000 ms (i.e., 1 second each time)
 
-var time = 301;
+var time = 4;
 
 // stopTime helps us in the functions to... wait for it... stop... time...
 
@@ -59,34 +59,19 @@ function stop() {
 
 function checkAnswers() {
 
-
-
 	$(".correct-answer").on("click", function() {
 		value = $(this).val().split(", ");
-
 		question_num = value[0];
 		answer_index =  value[1];
-
-		for (var i = 1; i < 5; i++) {
-			var radios = document.getElementsByName('q'+i);
-				for (var j = 0; j < radios.length; j++) {
-					var radio = radios[j];
-					if (radio.value && radio.checked) {
-						correctAnswers++;
-					}
-				}
-			}
-		// correctAnswers++;
+		correctAnswers++;
 	});
 
-	// $(".incorrect-answer").on("click", function() {
-	// 	value = $(this).val().split(", ");
-	// 	question_num = value[0];
-	// 	answer_index = value[1];
-
-	// 	incorrectAnswers++;
-
-	// });
+	$(".incorrect-answer").on("click", function() {
+		value = $(this).val().split(", ");
+		question_num = value[0];
+		answer_index = value[1];
+		incorrectAnswers++;
+	});
 
 };
 
@@ -96,25 +81,46 @@ function scorePage() {
 
 	// Once the user clicks on the Submit button OR if time is up (time = 0), transition to the score page
 
+	$("#ultimate-game-page2").hide();
+
+	var newPage = $("#ultimate-game-page2");
+
 	$(".outcome-page").on("click", function() {
 		stop();
-		$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers.`);
-		if (correctAnswers === 4) {
-			$("#ultimate-game-page").append("<br><br>Perfect ending.");
-		} else {
-			$("#ultimate-game-page").append("<br><br>Bad ending.<br><br>He never let you leave. He devoured you shortly after you went to bed.<br><br>At least you tasted good... right?");
-		}
+		$(".correct-answers").text(correctAnswers);
+		$(".incorrect-answers").text(incorrectAnswers);
+		$("#ultimate-game-page").replaceWith(newPage);
+		$("#ultimate-game-page2").show();
+
 	});
 
 	if (time === 0) {
-		stop();
-		$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers.`);
-		if (correctAnswers === 4) {
-			$("#ultimate-game-page").append("<br><br>Perfect ending.");
-		} else {
-			$("#ultimate-game-page").append("<br><br>Bad ending.<br><br>He never let you leave. He devoured you shortly after you went to bed.<br><br>At least you tasted good... right?");
-		}
+		$(".correct-answers").text(correctAnswers);
+		$(".incorrect-answers").text(incorrectAnswers);
+		$("#ultimate-game-page").replaceWith(newPage);
+		$("#ultimate-game-page2").show();
 	}
+	
+
+	// $(".outcome-page").on("click", function() {
+	// 	stop();
+	// 	$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers.`);
+	// 	if (correctAnswers === 4) {
+	// 		$("#ultimate-game-page").append("<br><br>Perfect ending.");
+	// 	} else {
+	// 		$("#ultimate-game-page").append("<br><br>Bad ending.<br><br>He never let you leave. He devoured you shortly after you went to bed.<br><br>At least you tasted good... right?");
+	// 	}
+	// });
+
+	// if (time === 0) {
+	// 	stop();
+	// 	$("#ultimate-game-page").html(`You have ${correctAnswers} correct answers and ${incorrectAnswers} incorrect answers.`);
+	// 	if (correctAnswers === 4) {
+	// 		$("#ultimate-game-page").append("<br><br>Perfect ending.");
+	// 	} else {
+	// 		$("#ultimate-game-page").append("<br><br>Bad ending.<br><br>He never let you leave. He devoured you shortly after you went to bed.<br><br>At least you tasted good... right?");
+	// 	}
+	// }
 }
 
 countdown();
