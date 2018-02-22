@@ -4,7 +4,7 @@ $(document).ready(function() {
 
 // Declares how much time (in seconds) you have left to live. Consult countdown() function to see decrement by 1000 ms (i.e., 1 second each time)
 
-var time = 4;
+var time = 101;
 
 // stopTime helps us in the functions to... wait for it... stop... time...
 
@@ -63,6 +63,9 @@ function checkAnswers() {
 		value = $(this).val().split(", ");
 		question_num = value[0];
 		answer_index =  value[1];
+
+		console.log(`${question_num} is the question_num and ${answer_index} is the answer_index`);
+
 		correctAnswers++;
 	});
 
@@ -70,10 +73,14 @@ function checkAnswers() {
 		value = $(this).val().split(", ");
 		question_num = value[0];
 		answer_index = value[1];
+
+		console.log(`${question_num} is the question_num and ${answer_index} is the answer_index`);
+
 		incorrectAnswers++;
 	});
 
-};
+
+}
 
 // scorePage() shows you your scores
 
@@ -84,6 +91,7 @@ function scorePage() {
 	$("#ultimate-game-page2").hide();
 
 	var newPage = $("#ultimate-game-page2");
+	var originalPage = $("#ultimate-game-page");
 
 	$(".outcome-page").on("click", function() {
 		stop();
@@ -91,15 +99,20 @@ function scorePage() {
 		$(".incorrect-answers").text(incorrectAnswers);
 		$("#ultimate-game-page").replaceWith(newPage);
 		$("#ultimate-game-page2").show();
-
 	});
 
 	if (time === 0) {
+		stop();
 		$(".correct-answers").text(correctAnswers);
 		$(".incorrect-answers").text(incorrectAnswers);
 		$("#ultimate-game-page").replaceWith(newPage);
 		$("#ultimate-game-page2").show();
 	}
+
+	// $("#return-button").on("click", function() {
+	// 	$("#ultimate-game-page2").replaceWith(originalPage);
+	// 	countdown();
+	// });
 	
 
 	// $(".outcome-page").on("click", function() {
