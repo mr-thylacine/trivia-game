@@ -12,8 +12,17 @@ var stopTime;
 
 // Declares variables for judging the correct-ness of the userChoice
 
-var correctAnswers = 0;
-var incorrectAnswers = 0;
+// var correctAnswers = 0;
+// var incorrectAnswers = 0;
+
+// Declares a dictionary (answer key) to check the answers against the user's choices
+
+var answers = {
+	q1: false,
+	q2: false,
+	q3: false,
+	q4: false
+};
 
 // The following 3 variables are used in the checkAnswers() function
 // value - Refers to the values denoted in the radio buttons in HTML
@@ -59,27 +68,74 @@ function stop() {
 
 function checkAnswers() {
 
-	$(".correct-answer").on("click", function() {
-		value = $(this).val().split(", ");
-		question_num = value[0];
-		answer_index =  value[1];
+    $('.correct-answer').on('click', function() {
+      value = $(this)
+        .val()
+        .split(', ');
+      name = $(this).attr('name');
 
-		console.log(`${question_num} is the question_num and ${answer_index} is the answer_index`);
+      console.log(name);
 
-		correctAnswers++;
-	});
+      answers[name] = true;
 
-	$(".incorrect-answer").on("click", function() {
-		value = $(this).val().split(", ");
-		question_num = value[0];
-		answer_index = value[1];
+      console.log(answers);
+    });
 
-		console.log(`${question_num} is the question_num and ${answer_index} is the answer_index`);
+    $('.incorrect-answer').on('click', function() {
+      value = $(this)
+        .val()
+        .split(', ');
+      name = $(this).attr('name');
 
-		incorrectAnswers++;
-	});
+      answers[name] = false;
+      console.log(answers);
+    });
+
+	// $(".correct-answer").on("click", function() {
+	// 	value = $(this).val().split(", ");
+	// 	answers.q1 = true;
+		
+	// 	console.log(answers);
+	// });
+
+	// $(".correct-answer").on("click", function() {
+	// 	value = $(this).val().split(", ");
+	// 	// question_num = value[0];
+	// 	// answer_index =  value[1];
+
+	// 	console.log(`${question_num} is the question_num and ${answer_index} is the answer_index`);
+
+	// 	correctAnswers++;
+	// });
+
+	// $(".incorrect-answer").on("click", function() {
+	// 	value = $(this).val().split(", ");
+	// 	// question_num = value[0];
+	// 	// answer_index = value[1];
+
+	// 	console.log(`${question_num} is the question_num and ${answer_index} is the answer_index`);
+
+	// 	incorrectAnswers++;
+	// });
+
+}
+
+function answerSubmit() {
+	// Counts how many trues and falses there are in the answers object
 
 
+
+	// for (var i = 0; i < answers.length; i++) {
+	// 	if (answers[name] == true) {
+	// 		correct++;
+	// 	} else {
+	// 		incorrect++;
+	// 	}
+	// 	console.log(answers);
+	// }
+
+
+	
 }
 
 // scorePage() shows you your scores
@@ -95,16 +151,17 @@ function scorePage() {
 
 	$(".outcome-page").on("click", function() {
 		stop();
-		$(".correct-answers").text(correctAnswers);
-		$(".incorrect-answers").text(incorrectAnswers);
+
+		// $(".correct-answers").text(correct);
+		// $(".incorrect-answers").text(incorrect);
 		$("#ultimate-game-page").replaceWith(newPage);
 		$("#ultimate-game-page2").show();
 	});
 
 	if (time === 0) {
 		stop();
-		$(".correct-answers").text(correctAnswers);
-		$(".incorrect-answers").text(incorrectAnswers);
+		// $(".correct-answers").text(answers);
+		// $(".incorrect-answers").text(answers);
 		$("#ultimate-game-page").replaceWith(newPage);
 		$("#ultimate-game-page2").show();
 	}
@@ -139,6 +196,8 @@ function scorePage() {
 countdown();
 
 checkAnswers();
+
+answerSubmit();
 
 scorePage();
 
