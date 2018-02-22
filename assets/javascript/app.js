@@ -18,10 +18,10 @@ var stopTime;
 // Declares a dictionary (answer key) to check the answers against the user's choices
 
 var answers = {
-	q1: false,
-	q2: false,
-	q3: false,
-	q4: false
+	q1: null,
+	q2: null,
+	q3: null,
+	q4: null
 };
 
 // The following 3 variables are used in the checkAnswers() function
@@ -120,10 +120,67 @@ function checkAnswers() {
 
 }
 
+var correctAnswers = 0;
+var incorrectAnswers = 0;
+
 function answerSubmit() {
 	// Counts how many trues and falses there are in the answers object
 
 
+console.log('answers q1 is ' + answers.q1);
+
+$(".outcome-page").on("click", function() {
+
+	if (answers.q1 == null) {
+		incorrectAnswers;
+	}
+	else if (answers.q1 == true) {
+		correctAnswers++;
+	} else {
+		incorrectAnswers++;
+	}
+
+
+if (answers.q2 == null) {
+		incorrectAnswers;
+	}
+	else if (answers.q2 == true) {
+		correctAnswers++;
+	} else {
+		incorrectAnswers++;
+	}
+
+if (answers.q3 == null) {
+		incorrectAnswers;
+	}
+	else if (answers.q3 == true) {
+		correctAnswers++;
+	} else {
+		incorrectAnswers++;
+	}
+
+if (answers.q4 == null) {
+		incorrectAnswers;
+	}
+	else if (answers.q4 == true) {
+		correctAnswers++;
+	} else {
+		incorrectAnswers++;
+	}
+
+	console.log(correctAnswers);
+	console.log(incorrectAnswers);
+});
+
+	// $(".outcome-page").on("click", function() {
+	// 	for (var i = 0; i < answers.length; i++) {
+	// 		if (Object.is(true, true)) {
+			
+	// 		correctAnswers++;
+	// 		console.log(correctAnswers);
+	// 	}
+	// 	}
+	// });
 
 	// for (var i = 0; i < answers.length; i++) {
 	// 	if (answers[name] == true) {
@@ -149,12 +206,20 @@ function scorePage() {
 	var newPage = $("#ultimate-game-page2");
 	var originalPage = $("#ultimate-game-page");
 
+	var badEndnoWolf = $(".no-wolf");
+
 	$(".outcome-page").on("click", function() {
 		stop();
 
-		// $(".correct-answers").text(correct);
-		// $(".incorrect-answers").text(incorrect);
+
+		$(".correct-answers").text(correctAnswers);
+		$(".incorrect-answers").text(incorrectAnswers);
 		$("#ultimate-game-page").replaceWith(newPage);
+
+			// if (answers.q1 == false) {
+			// 	$("#ultimate-game-page").append(badEndnoWolf);
+			// } else 
+
 		$("#ultimate-game-page2").show();
 	});
 
