@@ -29,7 +29,7 @@ var answers = {
 // question_num - Refers to the first item in value (value[0])
 // answer_index - Refers to the second item in value (value[1])
 
-var value;					
+var value;
 var question_num;
 var answer_index;
 
@@ -55,7 +55,6 @@ function decrement() {
 		alert("Are you done choosing yet?");
 		scorePage();
 	}
-
 }
 
 // stop() uses stopTime to... stop() time *ROLL CREDITS*
@@ -68,28 +67,18 @@ function stop() {
 
 function checkAnswers() {
 
-    $('.correct-answer').on('click', function() {
-      value = $(this)
-        .val()
-        .split(', ');
-      name = $(this).attr('name');
+	$('.correct-answer').on('click', function() {   
+		name = $(this).attr('name');
+		console.log(name);
+		answers[name] = true;
+		console.log(answers);
+	});
 
-      console.log(name);
-
-      answers[name] = true;
-
-      console.log(answers);
-    });
-
-    $('.incorrect-answer').on('click', function() {
-      value = $(this)
-        .val()
-        .split(', ');
-      name = $(this).attr('name');
-
-      answers[name] = false;
-      console.log(answers);
-    });
+	$('.incorrect-answer').on('click', function() {
+		name = $(this).attr('name');
+		answers[name] = false;
+		console.log(answers);
+	});
 
 	// $(".correct-answer").on("click", function() {
 	// 	value = $(this).val().split(", ");
@@ -125,52 +114,40 @@ var incorrectAnswers = 0;
 
 function answerSubmit() {
 	// Counts how many trues and falses there are in the answers object
-
+}
 
 console.log('answers q1 is ' + answers.q1);
 
-$(".outcome-page").on("click", function() {
+	var trueCounter = 0;
+	var falseCounter = 0;
+	var nullCounter = 0;
 
-	if (answers.q1 == null) {
-		incorrectAnswers;
-	}
-	else if (answers.q1 == true) {
-		correctAnswers++;
-	} else {
-		incorrectAnswers++;
-	}
+function countTrue(object){
 
 
-if (answers.q2 == null) {
-		incorrectAnswers;
-	}
-	else if (answers.q2 == true) {
-		correctAnswers++;
-	} else {
-		incorrectAnswers++;
-	}
+	$(".outcome-page").on("click", function() {
+	correctAnswers = countTrue(answers);
 
-if (answers.q3 == null) {
-		incorrectAnswers;
-	}
-	else if (answers.q3 == true) {
-		correctAnswers++;
-	} else {
-		incorrectAnswers++;
-	}
-
-if (answers.q4 == null) {
-		incorrectAnswers;
-	}
-	else if (answers.q4 == true) {
-		correctAnswers++;
-	} else {
-		incorrectAnswers++;
-	}
-
-	console.log(correctAnswers);
-	console.log(incorrectAnswers);
+	Object.keys(object).forEach(function(apple) {
+		if (object[apple] == true) {
+			trueCounter++;
+		}
+		else if (object[apple] == false) {
+			falseCounter++;
+		}
+		else {
+			nullCounter++;
+		}
+	})
+	return trueCounter;
 });
+
+// $(".outcome-page").on("click", function() {
+// 	correctAnswers = countTrue(summary)
+
+	// console.log(correctAnswers);
+	// console.log(incorrectAnswers);
+}
 
 	// $(".outcome-page").on("click", function() {
 	// 	for (var i = 0; i < answers.length; i++) {
@@ -193,7 +170,7 @@ if (answers.q4 == null) {
 
 
 	
-}
+
 
 // scorePage() shows you your scores
 
@@ -212,8 +189,8 @@ function scorePage() {
 		stop();
 
 
-		$(".correct-answers").text(correctAnswers);
-		$(".incorrect-answers").text(incorrectAnswers);
+		$(".correct-answers").text(trueCounter);
+		$(".incorrect-answers").text(falseCounter);
 		$("#ultimate-game-page").replaceWith(newPage);
 
 			// if (answers.q1 == false) {
@@ -262,8 +239,12 @@ countdown();
 
 checkAnswers();
 
+countTrue(answers);
+
 answerSubmit();
 
 scorePage();
+
+
 
 });
