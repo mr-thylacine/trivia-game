@@ -185,6 +185,8 @@ function scorePage() {
 
 	var badEndnoWolf = $(".no-wolf");
 
+	// if ()
+
 	$(".outcome-page").on("click", function() {
 		stop();
 

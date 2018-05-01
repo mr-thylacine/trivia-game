@@ -60,3 +60,9 @@ p {
 .chapter-color {
 	color: #D38217;
 }
+
+.no-wolf {
+	color: #fff;
+	width: 60%;
+	float: right;
+}
