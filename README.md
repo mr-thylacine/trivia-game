@@ -1,4 +1,5 @@
-# trivia-game
+# date the wolf, not the others
+
 thursday, february 15, 2018 - A fun dating game using JavaScript and jQuery!
 
 ### the premise
@@ -18,6 +19,10 @@ When the user submits their choices, the JavaScript goes through the user's choi
 Each correct answer (value = true) means the counter for correct answers increases by one. Each incorrect answer (value = false) means the counter for incorrect answers increases by one. And if the user refuses to answer a question, the answer for that question becomes null and increases the null counter by one. The amount of correct and incorrect answers is shown on the score page.
 
 The timer refreshes every second and is replaced by the new number using jQuery.
+
+### future features
+
+Please visit the future features right ![here](https://github.com/mr-thylacine/trivia-game/issues/2)! 
 
 ### let's play?
 
