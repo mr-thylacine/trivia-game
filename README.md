@@ -2,6 +2,10 @@
 
 thursday, february 15, 2018 - A fun dating game using JavaScript and jQuery!
 
+## play this game here!
+
+https://mr-thylacine.github.io/trivia-game/
+
 ### the premise
 
 Date the Wolf is an otome-inspired game. Otome (oh-TOE-may) is a Japanese dating simulator game designed for women or "maidens" and usually follows the viewpoint of the main character and her journey of romancing one of the male love interests in the game. There are usually "good" ends and "bad" ends depending on your in-game choices.
