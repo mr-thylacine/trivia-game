@@ -2,10 +2,6 @@
 
 thursday, february 15, 2018 - A fun dating game using JavaScript and jQuery!
 
-## play this game here!
-
-https://mr-thylacine.github.io/trivia-game/
-
 ### the premise
 
 Date the Wolf is an otome-inspired game. Otome (oh-TOE-may) is a Japanese dating simulator game designed for women or "maidens" and usually follows the viewpoint of the main character and her journey of romancing one of the male love interests in the game. There are usually "good" ends and "bad" ends depending on your in-game choices.
@@ -23,15 +19,5 @@ When the user submits their choices, the JavaScript goes through the user's choi
 Each correct answer (value = true) means the counter for correct answers increases by one. Each incorrect answer (value = false) means the counter for incorrect answers increases by one. And if the user refuses to answer a question, the answer for that question becomes null and increases the null counter by one. The amount of correct and incorrect answers is shown on the score page.
 
 The timer refreshes every second and is replaced by the new number using jQuery.
-
-### future features
-
-Please visit the future features right ![here](https://github.com/mr-thylacine/trivia-game/issues/2)! 
-
-### let's play?
-
-Of course! Visit the Wolf here:
-
-https://mr-thylacine.github.io/trivia-game/
 
 ![I have a bad feeling about this...](assets/images/wolf1.jpg)
